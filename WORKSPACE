@@ -66,25 +66,21 @@ python_register_multi_toolchains(
 load("@python//:pip.bzl", "multi_pip_parse")
 
 multi_pip_parse(
-    name = "pypi",
+    name = "pybind11_abseil_pypi",
     default_version = DEFAULT_PYTHON,
     python_interpreter_target = {
         "3.12": "@python_3_12_host//:python",
         "3.11": "@python_3_11_host//:python",
         "3.10": "@python_3_10_host//:python",
-        "3.9": "@python_3_9_host//:python",
-        "3.8": "@python_3_8_host//:python",
     },
     requirements_lock = {
         "3.12": "//pybind11_abseil/requirements:requirements_lock_3_12.txt",
         "3.11": "//pybind11_abseil/requirements:requirements_lock_3_11.txt",
-        "3.10": "//pybind11_abseil/requirements:requirements_lock_3_10.txt",
-        "3.9": "//pybind11_abseil/requirements:requirements_lock_3_9.txt",
-        "3.8": "//pybind11_abseil/requirements:requirements_lock_3_8.txt",
+        "3.10": "//pybind11_abseil/requirements:requirements_lock_3_10.txt"
     },
 )
 
-load("@pypi//:requirements.bzl", "install_deps")
+load("@pybind11_abseil_pypi//:requirements.bzl", "install_deps")
 
 install_deps()
 
